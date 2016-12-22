@@ -8,11 +8,12 @@ To create a JWT key for your domain log into the [Convergence Administration Con
 ## Installation
 `npm install --save convergence-jwt`
 
-## Usage
-To generate a 
+## Example Usage
+The below demonstrates how you can generate a JWT in node using a private key stored on the filesystem.
+
 ```js
 var fs = require('fs');
-var JwtGenerator = require('../dist/convergence-jwt').JwtGenerator;
+var JwtGenerator = require('../dist/convergence-jwt');
 
 // replace with your private key
 var privateKey = fs.readFileSync('test/private.key');

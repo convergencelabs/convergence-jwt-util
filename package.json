@@ -1,23 +1,31 @@
 {
-  "name": "convergence-jwt",
-  "description": "The best module ever.",
+  "name": "@convergence/jwt-util",
+
+  "description": "A utility for generating JSON Web Tokens for authenticating to Convergence.",
+  "keywords": ["convergence", "jwt"],
   "version": "0.1.0",
-  "homepage": "http://www.convergence.abs.com",
-  "bugs": "user/repo/issues",
+  "main": "convergence-jwt.js",
+
+  "homepage": "http://convergencelabs.com",
+  "bugs": "https://github.com/convergencelabs/convergence-jwt-util/issues",
   "license": "MIT",
-  "main": "dist/convergence-jwt.js",
   "author": {
-    "name": "Convergence Labs, Inc."
+    "name": "Convergence Labs, Inc.",
+    "email": "info@convergencelabs.com",
+    "url": "http://convergencelabs.com"
   },
+
   "repository": {
     "type": "git",
-    "url": "user/repo"
+    "url": "https://github.com/convergencelabs/convergence-jwt-util.git"
   },
-  "keywords": [],
+
   "dependencies": {
     "jsonwebtoken": "7.1.9"
   },
+
   "devDependencies": {
+    "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-transform-es2015-modules-commonjs": "6.18.0",
     "babel-preset-es2015": "6.18.0",
     "del": "2.2.2",

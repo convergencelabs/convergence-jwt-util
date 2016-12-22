@@ -1,7 +1,8 @@
 'use strict';
 
 var fs = require('fs');
-var JwtGenerator = require('../dist/convergence-jwt').JwtGenerator;
+var JwtGenerator = require('../dist/convergence-jwt');
+
 var jwt  = require('jsonwebtoken');
 var should = require('should');
 
@@ -17,7 +18,7 @@ describe('ConvergenceJwtGenerator', function () {
 
     var gen = new JwtGenerator("testKey", privateKey);
     var token = gen.generate("test-user", {roles: ['r1', 'r2']});
-    console.log(token);
+
     var opts = {
       audience: "Convergence",
       issuer: "ConvergenceJwtGenerator",
