@@ -3,7 +3,7 @@
 
   "description": "A utility for generating JSON Web Tokens for authenticating to Convergence.",
   "keywords": ["convergence", "jwt"],
-  "version": "0.1.6",
+  "version": "0.1.7",
   "main": "convergence-jwt.js",
 
   "homepage": "http://convergencelabs.com",
@@ -53,7 +53,6 @@
   "scripts": {
     "clean": "gulp clean",
     "test": "gulp test",
-    "dist": "gulp dist",
-    "publish": "npm publish dist"
+    "dist": "gulp dist"
   }
 }
