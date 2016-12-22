@@ -21,7 +21,7 @@ var JwtGenerator = require('../dist/convergence-jwt');
 var privateKey = fs.readFileSync('test/private.key');
 
 // Replace with your key id
-var keyId = "my-convergence-key"
+var keyId = "my-convergence-key";
 
 var gen = new JwtGenerator(keyId, privateKey);
 
