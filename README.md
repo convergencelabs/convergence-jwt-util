@@ -15,7 +15,7 @@ The below demonstrates how you can generate a JWT in node using a private key st
 
 ```js
 var fs = require('fs');
-var JwtGenerator = require('../dist/convergence-jwt');
+var JwtGenerator = require('@convergence/jwt-util');
 
 // replace with your private key
 var privateKey = fs.readFileSync('test/private.key');
