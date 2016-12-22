@@ -1,4 +1,6 @@
 # Convergence JWT Generator
+[![Build Status](https://travis-ci.org/convergencelabs/convergence-jwt-util.svg?branch=master)](https://travis-ci.org/convergencelabs/convergence-jwt-util)
+
 This project helps users easily create a JavaScript Web Token (JWT) for logging into Convergence.  JWTs allow Convergnece to trust that an external system has properly authenticated a user.  Convergence uses asymetric RSA Public / Private keys to generate JWTs. Convergence will store your public key.  You must store your private key in a safe place.  The public / private key pair sets up trust between your application and Convergence.
 
 You can learn more about JWTs at [http://jwt.io](http://jwt.io)
