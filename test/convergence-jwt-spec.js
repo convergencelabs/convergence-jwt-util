@@ -12,7 +12,7 @@ var key = "MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCishDxrAVKG9hyqX3jh
 
 describe('ConvergenceJwtGenerator', function () {
 
-  it('should be awesome', function () {
+  it('correctly create a valid JWT', function () {
     var privateKey = fs.readFileSync('test/private.key');
     var publicKey = fs.readFileSync('test/public.key');
 
