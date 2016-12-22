@@ -6,7 +6,7 @@ You can learn more about JWTs at [http://jwt.io](http://jwt.io)
 To create a JWT key for your domain log into the [Convergence Administration Console](https://convergence.io). If you have questions about generating a JWT Key Pair please consult the [Convergence Developer Guide](https://docs.convergence.io/guide/)
 
 ## Installation
-`npm install --save convergence-jwt`
+`npm install --save @convergence/jwt-util`
 
 ## Example Usage
 The below demonstrates how you can generate a JWT in node using a private key stored on the filesystem.
