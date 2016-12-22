@@ -47,12 +47,12 @@ gulp.task('build', ['lint'], function () {
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('copy-package', ['build'], function () {
-  return gulp.src('package.json')
+gulp.task('copy-files', ['build'], function () {
+  return gulp.src(['package.json', 'README.md', 'LICENSE.txt'])
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('dist', ['test', 'copy-package'], function () {
+gulp.task('dist', ['test', 'copy-files'], function () {
   return gulp.src('dist/convergence-jwt.js')
     .pipe(sourcemaps.init())
     .pipe(uglify())

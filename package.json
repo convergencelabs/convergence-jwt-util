@@ -3,7 +3,7 @@
 
   "description": "A utility for generating JSON Web Tokens for authenticating to Convergence.",
   "keywords": ["convergence", "jwt"],
-  "version": "0.1.0",
+  "version": "0.1.5",
   "main": "convergence-jwt.js",
 
   "homepage": "http://convergencelabs.com",
@@ -22,6 +22,11 @@
 
   "dependencies": {
     "jsonwebtoken": "7.1.9"
+  },
+
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
   },
 
   "devDependencies": {
@@ -46,6 +51,7 @@
     "uglify": "0.1.5"
   },
   "scripts": {
+    "clean": "gulp clean",
     "test": "gulp test",
     "dist": "gulp dist",
     "publish": "npm publish dist"
