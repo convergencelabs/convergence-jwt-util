@@ -8,6 +8,8 @@ const plumber = require('gulp-plumber');
 const mocha = require('gulp-mocha');
 const uglify = require('gulp-uglify');
 const del = require('del');
+const header = require('gulp-header');
+const fs = require("fs");
 
 const plumberConf = {};
 
@@ -39,10 +41,14 @@ gulp.task('test', ['build'], function (cb) {
 });
 
 gulp.task('build', ['lint'], function () {
+  const headerTxt = fs.readFileSync("./copyright-header.txt");
+  const packageJson = JSON.parse(fs.readFileSync("./package.json"));
+
   return gulp.src('lib/*.js')
     .pipe(sourcemaps.init())
     .pipe(babel())
     .pipe(concat('convergence-jwt.js'))
+    .pipe(header(headerTxt, {package: packageJson}))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('dist'));
 });
@@ -55,7 +61,9 @@ gulp.task('copy-files', ['build'], function () {
 gulp.task('dist', ['test', 'copy-files'], function () {
   return gulp.src('dist/convergence-jwt.js')
     .pipe(sourcemaps.init())
-    .pipe(uglify())
+    .pipe(uglify({
+      preserveComments: "license"
+    }))
     .pipe(concat('convergence-jwt.min.js'))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('dist'));
