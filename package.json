@@ -19,12 +19,12 @@
     "type": "git",
     "url": "https://github.com/convergencelabs/convergence-jwt-util.git"
   },
-  "dependencies": {
-    "jsonwebtoken": "7.1.9"
-  },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
     "access": "public"
+  },
+  "dependencies": {
+    "jsonwebtoken": "7.1.9"
   },
   "devDependencies": {
     "babel-plugin-add-module-exports": "0.2.1",
