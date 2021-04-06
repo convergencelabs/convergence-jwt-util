@@ -5,7 +5,7 @@
     "convergence",
     "jwt"
   ],
-  "version": "0.1.8",
+  "version": "0.2.0",
   "main": "convergence-jwt.js",
   "homepage": "http://convergencelabs.com",
   "bugs": "https://github.com/convergencelabs/convergence-jwt-util/issues",
