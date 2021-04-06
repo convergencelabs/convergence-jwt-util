@@ -1,30 +1,18 @@
-const gulp = require('gulp');
-const sourcemaps = require('gulp-sourcemaps');
-const babel = require('gulp-babel');
-const concat = require('gulp-concat');
-const eslint = require('gulp-eslint');
-const istanbul = require('gulp-istanbul');
-const plumber = require('gulp-plumber');
-const mocha = require('gulp-mocha');
-const uglify = require('gulp-uglify');
-const del = require('del');
-const header = require('gulp-header');
-const fs = require("fs");
+import gulp from 'gulp';
+import sourcemaps from 'gulp-sourcemaps';
+import babel from 'gulp-babel';
+import concat from 'gulp-concat';
+import eslint from 'gulp-eslint';
+import istanbul from 'gulp-istanbul';
+import plumber from 'gulp-plumber';
+import mocha from 'gulp-mocha';
+import uglify from 'gulp-uglify';
+import header from 'gulp-header';
+import fs from "fs-extra";
 
 const plumberConf = {};
 
-gulp.task('default', ['dist'], function () {
-
-});
-
-gulp.task('lint', () => {
-  return gulp.src(['lib/*.js','!node_modules/**'])
-    .pipe(eslint())
-    .pipe(eslint.format())
-    .pipe(eslint.failAfterError());
-});
-
-gulp.task('test', ['build'], function (cb) {
+const test = (done) => {
    gulp.src('./dist/*.js')
     .pipe(istanbul())
     .pipe(istanbul.hookRequire())
@@ -35,12 +23,19 @@ gulp.task('test', ['build'], function (cb) {
         .pipe(istanbul.writeReports())
         .on('finish', function() {
           process.chdir(__dirname);
-          cb();
+            done();
         });
     });
-});
+};
 
-gulp.task('build', ['lint'], function () {
+const lint = () => {
+    return gulp.src(['lib/*.js','!node_modules/**'])
+        .pipe(eslint())
+        .pipe(eslint.format())
+        .pipe(eslint.failAfterError());
+}
+
+const build = () => {
   const headerTxt = fs.readFileSync("./copyright-header.txt");
   const packageJson = JSON.parse(fs.readFileSync("./package.json"));
 
@@ -51,24 +46,37 @@ gulp.task('build', ['lint'], function () {
     .pipe(header(headerTxt, {package: packageJson}))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('dist'));
-});
+};
 
-gulp.task('copy-files', ['build'], function () {
+const copyFiles = () => {
   return gulp.src(['package.json', 'README.md', 'LICENSE.txt'])
     .pipe(gulp.dest('dist'));
-});
+};
 
-gulp.task('dist', ['test', 'copy-files'], function () {
+const minify = () => {
   return gulp.src('dist/convergence-jwt.js')
     .pipe(sourcemaps.init())
     .pipe(uglify({
-      preserveComments: "license"
+        output: {
+          comments: "some"
+        }
     }))
     .pipe(concat('convergence-jwt.min.js'))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('dist'));
-});
+};
 
-gulp.task('clean', function () {
-  return del("dist");
-});
+const clean = (done) => {
+  fs.removeSync("dist");
+  done();
+};
+
+const dist = gulp.series(
+  lint, build, copyFiles, minify
+);
+
+export {
+  clean,
+  dist,
+  test
+}
